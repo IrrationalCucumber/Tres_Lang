@@ -36,10 +36,15 @@
     flex-direction: column;
     padding: 20px; /* Add some padding */
     width: 380px;
-    height: 380px;
+    height: 490px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a subtle box shadow */
-     
+    border: 1.9px rgb(255, 255, 255); 
+    border-style:solid;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    
    
 }
 
@@ -54,8 +59,8 @@
 .input{
 
      display:flex;
-     margin-top: 20px;
-      margin-left:50px;
+     margin-top: 40px;
+      margin-left:30px;
       width: 500px;
      height: 80px;
      align-items: center;
@@ -89,9 +94,10 @@ span{
 .submit_container {
      align-items: center;
      display: flex;
-     margin-left: 115px; /* Adjust the margin to align with the container */
+     margin-left: 100px; /* Adjust the margin to align with the container */
      gap: 9px;
-     margin-top: 30px;
+     margin-top: 60px;
+      
  }
  
  button {
@@ -104,10 +110,11 @@ span{
      background-color: #888888; /* Grey color for the button */
      cursor: pointer;
      transition: background-color 0.3s ease;
+     
  }
  
  button:hover {
-     background-color: #666666; /* Darker grey on hover */
+     background-color: #0e0d0d; /* Darker grey on hover */
  }
 
 
@@ -125,4 +132,9 @@ span{
  .inputs input:focus {
      outline: none;
      border-bottom: 2px solid gold; /* Change the border color on focus */
+ }
+
+ .logInButton{
+
+     width: 100px;
  }

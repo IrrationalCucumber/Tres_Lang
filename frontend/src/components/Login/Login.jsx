@@ -29,8 +29,8 @@ const Login = () => {
        <div className="forgot">Forgot Password? <span>Click Here!</span></div>
 
        <div className="submit_container">
-        <div className="sign_btn"><button>Sign Up</button></div>
-        <div className="login_btn"><button>Login</button></div>
+        <div className=""><button className='signUpButton'>Sign Up</button></div>
+        <div className="log_btn"><button className='logInButton'>Login</button></div>
 
          
        </div>
