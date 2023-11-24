@@ -5,18 +5,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace backend.Entities;
 
-public partial class ItelecdbContext : DbContext
+public partial class dbContext : DbContext
 {
-    public ItelecdbContext()
+    public dbContext()
     {
     }
 
-    public ItelecdbContext(DbContextOptions<ItelecdbContext> options)
+    public dbContext(DbContextOptions<dbContext> options)
         : base(options)
     {
     }
 
-    public virtual DbSet<Transaction> Transactions { get; set; }
+    //public virtual DbSet<Transaction> Transactions { get; set; }
 
     public virtual DbSet<user> Users { get; set; }
 
@@ -40,7 +40,8 @@ public partial class ItelecdbContext : DbContext
                 .HasColumnName("date");
         });
         */
-
+        //save the info on the entered data to the db
+        //for user account only
         modelBuilder.Entity<user>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
@@ -60,6 +61,13 @@ public partial class ItelecdbContext : DbContext
             entity.Property(e => e.Username)
                 .HasMaxLength(45)
                 .HasColumnName("username");
+            entity.Property(e => e.Age).HasColumnName("userAge");
+            entity.Property(e => e.Bday)
+                .HasColumnType("Date")
+                .HasColumnName("userBday");
+            entity.Property(e => e.Gender)
+                .HasMaxLength(45)
+                .HasColumnName("userGender");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -25,18 +25,11 @@ namespace backend.Controllers
             return "WELCOME " + name;
         }
 
-        [HttpGet]
-        public string users()
-        {
-            string query = "Select * from useraccount";
-            return query;
-        }
-
 
         [HttpPost]
-        public string Test(UserModel model)
+        public string UserIndfo(UserModel model)
         {
-            using (var context = new ItelecdbContext())
+            using (var context = new dbContext())
             {
                 context.Users.Add(new user
                 {
@@ -44,10 +37,10 @@ namespace backend.Controllers
                     Password = model.Password,
                     Fname = model.Fname,
                     Lname = model.Lname,
-                    //Bday = model.Bday,
-                    //Age = model.Age,
-                    //Gender = model.Gender,
-                    //DateCreated = model.DateCreated,
+                    Bday = model.Bday,
+                    Age = model.Age,
+                    Gender = model.Gender,
+                    DateCreated = model.DateCreated,
                 });
 
                 context.SaveChanges();
