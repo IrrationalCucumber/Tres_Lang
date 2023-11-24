@@ -27,7 +27,11 @@ namespace backend.Controllers
 
 
         [HttpPost]
+<<<<<<< HEAD
         public string user(UserModel model)
+=======
+        public string UserIndfo(UserModel model)
+>>>>>>> 2586a32fde2e819a0fb0f4bbb0813d8dd821f39c
         {
             using (var context = new dbContext())
             {
@@ -47,6 +51,7 @@ namespace backend.Controllers
             }
             return "SUCCESS";
         }
+<<<<<<< HEAD
 
         [HttpPost]
         public string entry(entryModel model)
@@ -69,5 +74,8 @@ namespace backend.Controllers
             return "SUCCESS";
         }
 
+=======
+        
+>>>>>>> 2586a32fde2e819a0fb0f4bbb0813d8dd821f39c
     }
 }

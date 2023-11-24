@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
+<<<<<<< HEAD
     ""
   ],
   "SelectedNode": "\\backend.sln",
+=======
+    "",
+    "\\backend"
+  ],
+  "SelectedNode": "\\backend\\Program.cs",
+>>>>>>> 2586a32fde2e819a0fb0f4bbb0813d8dd821f39c
   "PreviewInSolutionExplorer": false
 }
