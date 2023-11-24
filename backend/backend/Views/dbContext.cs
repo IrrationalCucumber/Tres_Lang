@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using backend.Models;
-=======
->>>>>>> 2586a32fde2e819a0fb0f4bbb0813d8dd821f39c
 using backend.Views;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,11 +20,7 @@ public partial class dbContext : DbContext
     //public virtual DbSet<Transaction> Transactions { get; set; }
 
     public virtual DbSet<user> Users { get; set; }
-<<<<<<< HEAD
     public virtual DbSet<entry> Entry { get; set; }
-=======
->>>>>>> 2586a32fde2e819a0fb0f4bbb0813d8dd821f39c
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySQL("server=localhost;uid=root;pwd=SethNL99*;database=abdb");
@@ -78,7 +71,6 @@ public partial class dbContext : DbContext
                 .HasColumnName("userGender");
         });
 
-<<<<<<< HEAD
         modelBuilder.Entity<entry>(entity =>
         {
             entity.HasKey(e => e.entryID).HasName("PRIMARY");
@@ -110,8 +102,6 @@ public partial class dbContext : DbContext
 
         });
 
-=======
->>>>>>> 2586a32fde2e819a0fb0f4bbb0813d8dd821f39c
         OnModelCreatingPartial(modelBuilder);
     }
 
