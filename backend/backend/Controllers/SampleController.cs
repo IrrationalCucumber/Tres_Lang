@@ -27,7 +27,8 @@ namespace backend.Controllers
 
 
         [HttpPost]
-        public string UserIndfo(UserModel model)
+
+        public string user(UserModel model)
         {
             using (var context = new dbContext())
             {
@@ -47,6 +48,27 @@ namespace backend.Controllers
             }
             return "SUCCESS";
         }
-        
+
+        [HttpPost]
+        public string entry(entryModel model)
+        {
+            using (var context = new dbContext())
+            {
+                context.Entry.Add(new entry
+                {
+                    Title = model.Title,
+                    Description = model.Description,
+                    Location = model.Location,
+                    Date = model.Date,
+                    Type = model.Type,
+                    Url = model.Url,
+                    DatePosted = model.DatePosted,
+                });
+
+                context.SaveChanges();
+            }
+            return "SUCCESS";
+        }
+
     }
 }
