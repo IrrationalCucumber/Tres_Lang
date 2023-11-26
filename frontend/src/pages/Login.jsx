@@ -51,7 +51,7 @@ export const Login = () => {
                     <p className="mb-0  text-center">
                       Don't have an account?{" "}
                       <a href="/sign-up" className="text-primary fw-bold">
-                        Sign-Up
+                        Sign-up
                       </a>
                     </p>
                   </div>
