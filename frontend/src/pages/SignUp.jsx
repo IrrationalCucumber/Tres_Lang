@@ -23,14 +23,14 @@ export const SignUp = () => {
                       <Form.Label className="text-center">
                         First Name
                       </Form.Label>
-                      <Form.Control type="email" placeholder="Enter firstname" />
+                      <Form.Control type="firstname" placeholder="Enter firstname" />
                     </Form.Group>
                     
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label className="text-center">
                        Last Name
                       </Form.Label>
-                      <Form.Control type="email" placeholder="Enter lastname" />
+                      <Form.Control type="lastname" placeholder="Enter lastname" />
 
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
