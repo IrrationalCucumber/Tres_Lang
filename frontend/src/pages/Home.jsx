@@ -1,10 +1,12 @@
 import React from "react";
-import Login from "./Login";
+
+
 
 function Home() {
   return (
     <div>
-      <Login></Login>
+        This is Home
+     
     </div>
   );
 }

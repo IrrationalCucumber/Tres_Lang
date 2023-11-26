@@ -1,0 +1,74 @@
+.navbar{
+    display:flex;
+    justify-content: space-between;
+    padding:3px;
+    box-shadow: 0 1px 3px -2px black;
+    color: black; /* Set text color to black */
+}
+
+.nav-logo{
+    display:flex;
+    align-items: center;
+    gap: 15px;
+    position:relative;
+    left:10px;
+    color: black; /* Set text color to black */
+}
+
+.nav-logo p{
+    font-size: xx-large;
+    font-weight: bold;
+    color: black; /* Set text color to black */
+    position:relative;
+    left: 20px;
+}
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 100px;
+    color: black; /* Set text color to black */
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+    left: 300px;
+}
+
+.nav-menu li{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    cursor:pointer;
+}
+
+.nav-menu hr{
+    border: none;
+    width: 80%;
+    height: 3px;
+    border-radius: 15px;
+    background: rgb(252, 1, 1); /* Set background color to black */
+}
+
+.log-in button {
+    width: 150px;
+    height: 52px;
+    outline:none;
+    border: 1px solid black; /* Set border color to black */
+    color: black; /* Set text color to black */
+    border-radius: 75px;
+    font-size: 18px;
+    font-weight: 500px;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    right: 70px;
+    top: 20px;
+}
+
+.log-in button:hover {
+    background: rgb(255, 1, 1); /* Change the background color on hover */
+    color: white; /* Change the text color on hover */
+}
