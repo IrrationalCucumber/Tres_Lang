@@ -59,7 +59,7 @@ export const SignUp = () => {
                     </Form.Group>
                     <div className="d-grid">
                       <Button variant="primary" type="submit">
-                        Login
+                        Sign-Up
                       </Button>
                     </div>
                   </Form>
