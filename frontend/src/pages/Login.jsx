@@ -19,19 +19,7 @@ export const Login = () => {
                 <p className=" mb-5">Please enter your login and password!</p>
                 <div className="mb-3">
                   <Form>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label className="text-center">
-                        First Name
-                      </Form.Label>
-                      <Form.Control type="email" placeholder="Enter email" />
-                    </Form.Group>
-                    
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label className="text-center">
-                       Last Name
-                      </Form.Label>
-                      <Form.Control type="email" placeholder="Enter email" />
-                    </Form.Group>
+                   
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label className="text-center">
