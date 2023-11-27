@@ -6,6 +6,7 @@ import { Profile } from "./pages/Profile";
 
 
 
+
 function App() {
   return (
     <div>
@@ -13,10 +14,12 @@ function App() {
        <NavBar/>
 
        <Routes>
-
+     
           <Route path='/' element={<Home/>}/>
+          <Route path='/home' element={<Home/>}/>
           <Route path='/about' element={<About/>}/>
-          <Route path='/' element={<Home/>}/>
+          <Route path='/profile' element={<Profile/>}/>
+        
           <Route path='/profile' element={<Profile/>}/>
        
 

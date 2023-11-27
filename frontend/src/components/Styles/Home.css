@@ -1,0 +1,64 @@
+/* Home.css */
+
+.banner {
+  position: relative;
+}
+
+.banner-image {
+  width: 115%; /* Adjust the width as needed */
+  height: auto;
+  display: flex;
+ 
+}
+
+.banner-content {
+  position: absolute;
+  top: 35%;
+  left: 8%; /* Adjust the left position to move the content to the left */
+  transform: translate(-50%, -50%);
+  text-align: left; /* Align text to the left */
+  color: white; /* Set the text color to contrast with the background */
+}
+
+.banner-message p {
+  font-size: 50px;
+  font-weight: bolder;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  margin-bottom: 20px;
+  position:relative;
+  left: 200px;
+  top: 0px;
+}
+
+.button {
+  background: rgb(132, 1, 255); 
+  color: white;
+  padding: 15px 30px;
+  font-size: 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.1s;
+  position: relative;
+  left: 350px; /* Adjust the left position to move the button to the left */
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+@media screen and (max-width: 600px) {
+  /* Adjust styles for smaller screens */
+  .banner-content {
+    left: 5%;
+  }
+
+  .banner-message p {
+    font-size: 40px;
+  }
+
+  .button {
+    left: 5%; /* Adjust the left position for the button on smaller screens */
+    width: 100%; /* Adjust the button width to fit the screen */
+  }
+}
