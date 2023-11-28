@@ -2,9 +2,19 @@ import React, { useState } from 'react'
 
 import "../NavBar/NavBar.css"
 import { Link } from 'react-router-dom'
+
+import {useNavigate} from "react-router-dom" 
+
 const NavBar = () => {
 
     const [menu,setMenu] = useState("Home")
+
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+      // Navigate to the desired route
+      navigate('/login');
+    };
   return (
 
     <div className='navbar'>
@@ -23,8 +33,10 @@ const NavBar = () => {
         </ul>
 
        <div className="log-in">
-
-          <button>Login </button>
+   
+     {/* ig click sa button mo render ang login nga page*/}
+   
+          <button onClick={handleButtonClick}>Login </button>
        </div>
 
     </div>
