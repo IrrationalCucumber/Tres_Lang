@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using backend.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers
 {
@@ -47,6 +48,27 @@ namespace backend.Controllers
             }
             return "SUCCESS";
         }
-        
+        [HttpPost]
+        public string UpdateInfo(UserModel model)
+        {
+            using (var context = new dbContext())
+            {
+                context.Users.Update(new user
+                {
+                    Username = model.Username,
+                    Password = model.Password,
+                    Fname = model.Fname,
+                    Lname = model.Lname,
+                    Bday = model.Bday,
+                    Age = model.Age,
+                    Gender = model.Gender,
+                    DateCreated = model.DateCreated,
+                });
+
+                context.SaveChanges();
+            }
+            return "SUCCESS";
+        }
+
     }
 }
