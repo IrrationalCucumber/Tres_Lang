@@ -1,0 +1,11 @@
+/* Footer.css */
+.footer {
+    background: linear-gradient(to right, #000000, #333333);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    color: aliceblue;
+  }
+    

@@ -1,7 +1,11 @@
 import React from 'react'
-
+import "../components/Styles/About.css"
 export const About = () => {
   return (
-    <div>About</div>
+
+
+<div className="background">
+  </div>
+    
   )
 }
