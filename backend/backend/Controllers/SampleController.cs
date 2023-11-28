@@ -28,7 +28,7 @@ namespace backend.Controllers
 
 
         [HttpPost]
-        public string UserIndfo(UserModel model)
+        public string signup(UserModel model)
         {
             using (var context = new dbContext())
             {
@@ -41,34 +41,74 @@ namespace backend.Controllers
                     Bday = model.Bday,
                     Age = model.Age,
                     Gender = model.Gender,
-                    DateCreated = model.DateCreated,
                 });
 
                 context.SaveChanges();
             }
             return "SUCCESS";
         }
-        [HttpPost]
-        public string UpdateInfo(UserModel model)
+ /**
+       [HttpPut]
+public string UpdateInfo(UserModel model)
+{
+    using (var context = new dbContext())
+    {
+        // Retrieve the existing user from the database based on the user ID.
+        var existingUser = context.Users.FirstOrDefault(u => u.Id == model.Id);
+
+        if (existingUser != null)
+        {
+            // Update the properties of the existing user with the values from the model.
+            existingUser.Username = model.Username;
+            existingUser.Password = model.Password;
+            existingUser.Fname = model.Fname;
+            existingUser.Lname = model.Lname;
+            existingUser.Bday = model.Bday;
+            existingUser.Age = model.Age;
+            existingUser.Gender = model.Gender;
+
+            // Save the changes to the database.
+            context.SaveChanges();
+
+            return "SUCCESS";
+        }
+
+        return "User not found"; // or handle this case in a way suitable for your application.
+    }
+}
+ */
+ //retrieve data based on id
+        [HttpGet]
+        public ActionResult<UserModel> userprofile(int userId)
         {
             using (var context = new dbContext())
             {
-                context.Users.Update(new user
-                {
-                    Username = model.Username,
-                    Password = model.Password,
-                    Fname = model.Fname,
-                    Lname = model.Lname,
-                    Bday = model.Bday,
-                    Age = model.Age,
-                    Gender = model.Gender,
-                    DateCreated = model.DateCreated,
-                });
+                var user = context.Users.FirstOrDefault(user => user.Id ==  userId);
 
-                context.SaveChanges();
+                if (user != null)
+                {
+                    // Map the entity to your UserModel
+                    var userModel = new UserModel
+                    {
+                        //Id = user.Id,
+                        Username = user.Username,
+                        Password = user.Password,
+                        Fname = user.Fname,
+                        Lname = user.Lname,
+                        //Bday = (DateOnly)user.Bday,
+                        //Age = (int)user.Age,
+                        //Gender = user.Gender,
+                        //DateCreated = user.DateCreated
+                    };
+
+                    return Ok(userModel); // Assuming you're using ASP.NET Core and returning JSON.
+                }
+
+                return NotFound(); // User not found, return a 404 response.
             }
-            return "SUCCESS";
         }
+
+
 
     }
 }
