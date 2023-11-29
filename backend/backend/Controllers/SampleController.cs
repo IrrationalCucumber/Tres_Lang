@@ -20,12 +20,6 @@ namespace backend.Controllers
             return list;
         }
 
-        [HttpGet]
-        public string Duhig(string name)
-        {
-            return "WELCOME " + name;
-        }
-
 
         [HttpPost]
         public string signup(UserModel model)
@@ -47,14 +41,14 @@ namespace backend.Controllers
             }
             return "SUCCESS";
         }
- /**
+ 
        [HttpPut]
-public string UpdateInfo(UserModel model)
+public string update_profile(UserModel model, int userID)
 {
     using (var context = new dbContext())
     {
         // Retrieve the existing user from the database based on the user ID.
-        var existingUser = context.Users.FirstOrDefault(u => u.Id == model.Id);
+        var existingUser = context.Users.FirstOrDefault(user => user.Id == model.Id);
 
         if (existingUser != null)
         {
@@ -73,10 +67,9 @@ public string UpdateInfo(UserModel model)
             return "SUCCESS";
         }
 
-        return "User not found"; // or handle this case in a way suitable for your application.
+        return "User not found"; 
     }
 }
- */
  //retrieve data based on id
         [HttpGet]
         public ActionResult<UserModel> userprofile(int userId)
@@ -95,16 +88,15 @@ public string UpdateInfo(UserModel model)
                         Password = user.Password,
                         Fname = user.Fname,
                         Lname = user.Lname,
-                        //Bday = (DateOnly)user.Bday,
-                        //Age = (int)user.Age,
-                        //Gender = user.Gender,
-                        //DateCreated = user.DateCreated
+                        Bday = (DateTime)user.Bday,
+                        Age = (int)user.Age,
+                        Gender = user.Gender
                     };
 
-                    return Ok(userModel); // Assuming you're using ASP.NET Core and returning JSON.
+                    return Ok(userModel); 
                 }
 
-                return NotFound(); // User not found, return a 404 response.
+                return NotFound(); 
             }
         }
 
@@ -126,10 +118,10 @@ public string UpdateInfo(UserModel model)
 
                     };
 
-                    return Ok(userModel); // Assuming you're using ASP.NET Core and returning JSON.
+                    return Ok(userModel); 
                 }
 
-                return NotFound(); // User not found, return a 404 response.
+                return NotFound();
             }
         }
 
