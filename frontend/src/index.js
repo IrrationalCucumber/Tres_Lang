@@ -1,9 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import App from "./App";
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+import Footer from "./components/Footer/Footer";
+
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <div>
+      <App />
+      <Footer />
+    </div>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
