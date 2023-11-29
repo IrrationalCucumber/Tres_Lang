@@ -110,7 +110,7 @@ public string UpdateInfo(UserModel model)
         //for sign in
         //verify if user exist
         [HttpGet]
-        public ActionResult<UserModel> signin(string username, string password)
+        public ActionResult<UserModel> signup(string username, string password)
         {
             using (var context = new dbContext())
             {
