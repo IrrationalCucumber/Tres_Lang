@@ -20,7 +20,13 @@ namespace backend.Controllers
             return list;
         }
 
-        //create new account
+        [HttpGet]
+        public string Duhig(string name)
+        {
+            return "WELCOME " + name;
+        }
+
+
         [HttpPost]
         public string signup(UserModel model)
         {
@@ -41,44 +47,43 @@ namespace backend.Controllers
             }
             return "SUCCESS";
         }
+ /**
+       [HttpPut]
+public string UpdateInfo(UserModel model)
+{
+    using (var context = new dbContext())
+    {
+        // Retrieve the existing user from the database based on the user ID.
+        var existingUser = context.Users.FirstOrDefault(u => u.Id == model.Id);
 
-        //update user based on id
-        [HttpPost]
-        public string UpdateInfo(UserModel model, int userID)
+        if (existingUser != null)
         {
-            using (var context = new dbContext())
-            {
-                // Retrieve the existing user from the database based on the user ID.
-                var existingUser = context.Users.FirstOrDefault(user => user.Id == userID);
+            // Update the properties of the existing user with the values from the model.
+            existingUser.Username = model.Username;
+            existingUser.Password = model.Password;
+            existingUser.Fname = model.Fname;
+            existingUser.Lname = model.Lname;
+            existingUser.Bday = model.Bday;
+            existingUser.Age = model.Age;
+            existingUser.Gender = model.Gender;
 
-                if (existingUser != null)
-                {
-                    // Update the properties of the existing user with the values from the model.
-                    existingUser.Username = model.Username;
-                    existingUser.Password = model.Password;
-                    existingUser.Fname = model.Fname;
-                    existingUser.Lname = model.Lname;
-                    existingUser.Bday = model.Bday;
-                    existingUser.Age = model.Age;
-                    existingUser.Gender = model.Gender;
+            // Save the changes to the database.
+            context.SaveChanges();
 
-                    // Save the changes to the database.
-                    context.SaveChanges();
-
-                    return "SUCCESS";
-                }
-
-                return "User not found"; // or handle this case in a way suitable for your application.
-            }
+            return "SUCCESS";
         }
 
-        //retrieve data based on id
+        return "User not found"; // or handle this case in a way suitable for your application.
+    }
+}
+ */
+ //retrieve data based on id
         [HttpGet]
         public ActionResult<UserModel> userprofile(int userId)
         {
             using (var context = new dbContext())
             {
-                var user = context.Users.FirstOrDefault(user => user.Id == userId);
+                var user = context.Users.FirstOrDefault(user => user.Id ==  userId);
 
                 if (user != null)
                 {
@@ -90,16 +95,40 @@ namespace backend.Controllers
                         Password = user.Password,
                         Fname = user.Fname,
                         Lname = user.Lname,
-                        Bday = (DateTime)user.Bday,
-                        Age = (int)user.Age,
-                        Gender = user.Gender,
+                        //Bday = (DateOnly)user.Bday,
+                        //Age = (int)user.Age,
+                        //Gender = user.Gender,
                         //DateCreated = user.DateCreated
                     };
 
-                    return Ok(userModel);
+                    return Ok(userModel); // Assuming you're using ASP.NET Core and returning JSON.
                 }
 
-                return NotFound();
+                return NotFound(); // User not found, return a 404 response.
+            }
+        }
+        //for sign in
+        //verify if user exist
+        [HttpGet]
+        public ActionResult<UserModel> signin(string username, string password)
+        {
+            using (var context = new dbContext())
+            {
+                var user = context.Users.FirstOrDefault(user => user.Username == username && user.Password == password);
+
+                if (user != null)
+                {
+                    // Map the entity to your UserModel
+                    var userModel = new UserModel
+                    {
+                        Id = user.Id
+
+                    };
+
+                    return Ok(userModel); // Assuming you're using ASP.NET Core and returning JSON.
+                }
+
+                return NotFound(); // User not found, return a 404 response.
             }
         }
         //for sign in
@@ -127,7 +156,6 @@ namespace backend.Controllers
             }
         }
 
-
-
+        
     }
 }
