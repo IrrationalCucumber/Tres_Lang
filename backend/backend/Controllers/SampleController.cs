@@ -107,30 +107,7 @@ public string UpdateInfo(UserModel model)
                 return NotFound(); // User not found, return a 404 response.
             }
         }
-        //for sign in
-        //verify if user exist
-        [HttpGet]
-        public ActionResult<UserModel> signup(string username, string password)
-        {
-            using (var context = new dbContext())
-            {
-                var user = context.Users.FirstOrDefault(user => user.Username == username && user.Password == password);
 
-                if (user != null)
-                {
-                    // Map the entity to your UserModel
-                    var userModel = new UserModel
-                    {
-                        Id = user.Id
-
-                    };
-
-                    return Ok(userModel); // Assuming you're using ASP.NET Core and returning JSON.
-                }
-
-                return NotFound(); // User not found, return a 404 response.
-            }
-        }
         //for sign in
         //verify if user exist
         [HttpGet]
