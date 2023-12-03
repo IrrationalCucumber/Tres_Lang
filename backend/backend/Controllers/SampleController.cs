@@ -99,7 +99,6 @@ public string update_profile(UserModel model, int userID)
                 return NotFound(); 
             }
         }
-
         //for sign in
         //verify if user exist
         [HttpGet]
