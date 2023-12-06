@@ -25,19 +25,27 @@ form {
 
 
   }
-
-  #input-submit {
-     color: white; 
-     background: rgb(0, 153, 255);
-     cursor: pointer;
-     width: 400px;
-     border-radius: 20px;
-     font-size: 20px;
-     
-
+  .button-submit button {
+    margin-top: 1em ;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    position: relative;
+    left: 4px;
+    width: 400px;
 
   }
+  
+  .button-submit button:hover {
+    background-color: #007bb5;
+  }
 
+  
 
 }
 
