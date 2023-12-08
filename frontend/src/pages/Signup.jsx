@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../components/Styles/Signup.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const SignUp = () => {
     age: 0,
     gender: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,6 +39,7 @@ const SignUp = () => {
         "https://localhost:8800/signup",
         formData
       );
+      navigate("/login");
       console.log("Post created:", response.data);
     } catch (error) {
       console.error("Error creating post:", error);
