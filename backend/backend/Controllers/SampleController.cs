@@ -102,7 +102,29 @@ namespace backend.Controllers
                 return NotFound();
             }
         }
+        //========================ENTRY MODULE==================================//
+        //post entry
+        [HttpPost]
+        public string Post(entryModel model)
+        {
+            using (var context = new dbContext())
+            {
+                context.Entry.Add(new entry
+                {
+                  
+                   Title = model.Title,
+                   Description = model.Description, 
+                   UserID   = model.UserID, 
+                   Posted = model.Posted,
+                   EntryLoc = model.EntryLoc,
+                   EntryLong = model.EntryLong,
+                   EntryLat = model.EntryLat
+                });
 
+                context.SaveChanges();
+            }
+            return "SUCCESS";
+        }
 
 
     }
