@@ -41,33 +41,34 @@ namespace backend.Controllers
         }
  
        [HttpPut]
-public string update_profile(int userID, UserModel model)
-{
-    using (var context = new dbContext())
-    {
-        // Retrieve the existing user from the database based on the user ID.
-        var existingUser = context.Users.FirstOrDefault(user => user.Id == model.Id);
-
-        if (existingUser != null)
+        public string update_profile(int userID, UserModel model)
         {
-            // Update the properties of the existing user with the values from the model.
-            existingUser.Username = model.Username;
-            existingUser.Password = model.Password;
-            existingUser.Fname = model.Fname;
-            existingUser.Lname = model.Lname;
-            existingUser.Bday = model.Bday;
-            existingUser.Age = model.Age;
-            existingUser.Gender = model.Gender;
+            using (var context = new dbContext())
+            {
+                // Retrieve the existing user from the database based on the user ID.
+                var existingUser = context.Users.FirstOrDefault(user => user.Id == userID);
 
-            // Save the changes to the database.
-            context.SaveChanges();
+                if (existingUser != null)
+                {
+                    // Update the properties of the existing user with the values from the model.
+                    existingUser.Username = model.Username;
+                    existingUser.Password = model.Password;
+                    existingUser.Fname = model.Fname;
+                    existingUser.Lname = model.Lname;
+                    existingUser.Bday = model.Bday;
+                    existingUser.Age = model.Age;
+                    existingUser.Gender = model.Gender;
 
-            return "SUCCESS";
+                    // Save the changes to the database.
+                    context.SaveChanges();
+
+                    return "SUCCESS";
+                }
+
+                return "User not found";
+            }
         }
 
-        return "User not found"; 
-    }
-}
         [HttpGet]
         public ActionResult<UserModel> Profile(int userId)
         {

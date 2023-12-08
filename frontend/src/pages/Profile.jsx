@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../components/Styles/Profile.css";
 import axios from "axios";
-import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const Profile = () => {
@@ -18,8 +17,6 @@ export const Profile = () => {
   const location = useLocation();
   const userId = location.pathname.split("/")[2];
 
-  useEffect(() => {});
-
   const navigate = useNavigate();
   //pre-fill the fields
   useEffect(() => {
@@ -27,33 +24,25 @@ export const Profile = () => {
       axios
         .get(`https://localhost:8800/Profile?userId=${userId}`)
         .then((response) => {
-          if (response != null) console.log(response.data);
+          //if (response != null) console.log(response.data);
+          // const retrievedAccount = response.data[0];
+          //format date
+          const formattedDate = new Date(response.data.bday)
+            .toISOString()
+            .substr(0, 10);
+          setAccount({
+            username: response.data.username,
+            password: response.data.password,
+            fname: response.data.fname,
+            lname: response.data.lname,
+            bday: formattedDate,
+            age: response.data.age,
+            gender: response.data.gender,
+          });
         })
         .catch(function (error) {
           console.log(error);
         });
-      //   try {
-      //     const res = await axios.get(
-      //       `http://localhost:8800/Profile?userId=${userId}`
-      //     );
-      //     const retrievedAccount = res.data[0];
-      //     //format date
-      //     const formattedDate = new Date(retrievedAccount.userBday)
-      //       .toISOString()
-      //       .substr(0, 10);
-      //     // Update the state with retrieved account data
-      //     setAccount({
-      //       username: retrievedAccount.username,
-      //       password: retrievedAccount.password,
-      //       fname: retrievedAccount.userFname,
-      //       lname: retrievedAccount.userLname,
-      //       bday: formattedDate,
-      //       age: retrievedAccount.userAge,
-      //       gender: retrievedAccount.userGender,
-      //     });
-      //   } catch (err) {
-      //     console.log(err);
-      //   }
     };
 
     fetchAccount();
@@ -72,16 +61,21 @@ export const Profile = () => {
   //save update
   const handleClick = async (e) => {
     try {
-      await axios.put(
-        "http://localhost:8800/update_profile/" + userId,
-        account
+      await axios.post(
+        `http://localhost:8800/update_profile?${userId}&
+        ${account}`
       );
-      navigate(`/profile/${userId}`); //refresh page
+      // Using the callback to log the updated state
+      setAccount((prevState) => {
+        console.log(prevState);
+        return prevState;
+      });
+      navigate(`/profile/${userId}`);
     } catch (err) {
       console.log(err);
     }
   };
-
+  console.log(account);
   return (
     <React.Fragment>
       <div className="background">
@@ -91,41 +85,41 @@ export const Profile = () => {
           </center>
           <input
             type="text"
-            placeholder="Username"
             value={account.username}
+            placeholder="username"
             onChange={handleChange}
-            required
+            name="username"
           />
           <input
             type="text"
             placeholder="FIRSTNAME"
             value={account.fname}
             onChange={handleChange}
-            required
+            name="fname"
           />
           <input
             type="text"
             placeholder="LASTNAME"
             value={account.lname}
             onChange={handleChange}
-            required
+            name="lname"
           />
           <input
             type="password"
             placeholder="PASSWORD"
             value={account.password}
             onChange={handleChange}
-            required
+            name="password"
           />
           <input
-            type="text"
+            type="date"
             placeholder="BIRTHDAY"
             value={account.bday}
             onChange={handleChange}
             name="bday"
           />
           <input
-            type="text"
+            type="number"
             placeholder="AGE"
             value={account.age}
             onChange={handleChange}
@@ -139,8 +133,8 @@ export const Profile = () => {
               value={account.gender}
             >
               <option value="">Choose gender....</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
             </select>
           </label>
           <div className="button-submit">

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "../NavBar/NavBar.css";
 import { Link } from "react-router-dom";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const NavBar = () => {
   const [menu, setMenu] = useState("Home");
@@ -14,6 +14,9 @@ const NavBar = () => {
     // Navigate to the desired route
     navigate("/login");
   };
+  //get user id from url
+  const location = useLocation();
+  const userId = location.pathname.split("/")[2];
   return (
     <div className="navbar">
       <div className="nav-logo">
@@ -39,7 +42,7 @@ const NavBar = () => {
           }}
           n
         >
-          <Link style={{ textDecoration: "none" }} to="/profile/:userID">
+          <Link style={{ textDecoration: "none" }} to={`/profile/${userId}`}>
             Profile
           </Link>
           {menu === "Profile" ? <hr /> : <></>}
