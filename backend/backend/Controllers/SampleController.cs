@@ -68,35 +68,22 @@ public string update_profile(int userID, UserModel model)
         return "User not found"; 
     }
 }
- //retrieve data based on id
         [HttpGet]
-        public ActionResult<UserModel> userprofile(int? userId)
+        public ActionResult<UserModel> Profile(int userId)
         {
             using (var context = new dbContext())
             {
-                var user = context.Users.FirstOrDefault(user => user.Id ==  userId);
+                var user = context.Users.FirstOrDefault(user => user.Id == userId);
 
                 if (user != null)
                 {
-                    // Map the entity to your UserModel
-                    var userModel = new UserModel
-                    {
-                        //Id = user.Id,
-                        Username = user.Username,
-                        Password = user.Password,
-                        Fname = user.Fname,
-                        Lname = user.Lname,
-                        Bday = (DateTime)user.Bday,
-                        Age = (int)user.Age,
-                        Gender = user.Gender
-                    };
-
-                    return Ok(userModel); 
+                    return Ok(user);
                 }
 
-                return NotFound(); 
+                return NotFound();
             }
         }
+
         //for sign in
         //verify if user exist
         [HttpGet]
