@@ -1,87 +1,51 @@
-/* Profile.css */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
+.background {
+  background: linear-gradient(45deg, #1dc571, #2980b9);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+form {
+   max-width: 600px;
+   text-align: center;
+   margin: 20px auto;
+
+  input, text {
+     border:0; outline:0;
+     padding: 1em;
+     border-radius:8px;
+     display: block;
+     width: 100%;
+     margin-top: 1em;
+     box-shadow:(0 1px 1px rgba(black, 0.1));
+     
+
+
   }
-  
-  div {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    color: #333;
-  }
-  
-  form {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-  }
-  
-  textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-  }
-  
-  button {
-    background-color: #4caf50;
+  .button-submit button {
+    margin-top: 1em ;
+    background-color: #3498db;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 12px;
+    border-radius: 4px;
     cursor: pointer;
-    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    position: relative;
+    left: 4px;
+    width: 400px;
+
   }
   
- 
-button:hover {
-    background-color: #45a049;
+  .button-submit button:hover {
+    background-color: #007bb5;
   }
-  
-  h2 {
-    color: #333;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  li {
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    padding: 10px;
-    margin-bottom: 5px;
-    border-radius: 4px;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    div {
-      max-width: 100%;
-      margin: 20px;
-    }
-  }
+
   
 
+}
 
-  .background {
-    background: linear-gradient(45deg, #1dc571, #2980b9);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
