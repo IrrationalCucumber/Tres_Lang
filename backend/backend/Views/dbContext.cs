@@ -17,7 +17,6 @@ public partial class dbContext : DbContext
     //public virtual DbSet<Transaction> Transactions { get; set; }
 
     public virtual DbSet<user> Users { get; set; }
-    public virtual DbSet<entry> Entries { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -67,32 +66,6 @@ public partial class dbContext : DbContext
             entity.Property(e => e.Gender)
                 .HasMaxLength(45)
                 .HasColumnName("userGender");
-        });
-        modelBuilder.Entity<entry>(entity =>
-        {
-            entity.HasKey(e => e.EntryID).HasName("PRIMARY");
-
-            entity.ToTable("entryId");
-
-            entity.Property(e => e.EntryID).HasColumnName("entryId");
-            entity.Property(e => e.Title)
-                .HasMaxLength(45)
-                .HasColumnName("entryTitle");
-            entity.Property(e => e.Description)
-                .HasColumnType("Text")
-                .HasColumnName("entryDesc");
-            entity.Property(e => e.Posted)
-                .HasColumnType("Date")
-                .HasColumnName("entryPosted");
-            entity.Property(e => e.EntryLoc)
-                .HasMaxLength(45)
-                .HasColumnName("entryLoc");
-            entity.Property(e => e.EntryLong)
-            .HasColumnName("entryLong")
-            .HasColumnType("Double");
-            entity.Property(e => e.EntryLat)
-            .HasColumnName("entryLat")
-            .HasColumnType("Double");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -40,34 +40,6 @@ namespace backend.Controllers
             return "SUCCESS";
         }
  
-       [HttpPut]
-        public string update_profile(int userID, UserModel model)
-        {
-            using (var context = new dbContext())
-            {
-                // Retrieve the existing user from the database based on the user ID.
-                var existingUser = context.Users.FirstOrDefault(user => user.Id == userID);
-
-                if (existingUser != null)
-                {
-                    // Update the properties of the existing user with the values from the model.
-                    existingUser.Username = model.Username;
-                    existingUser.Password = model.Password;
-                    existingUser.Fname = model.Fname;
-                    existingUser.Lname = model.Lname;
-                    existingUser.Bday = model.Bday;
-                    existingUser.Age = model.Age;
-                    existingUser.Gender = model.Gender;
-
-                    // Save the changes to the database.
-                    context.SaveChanges();
-
-                    return "SUCCESS";
-                }
-
-                return "User not found";
-            }
-        }
 
         [HttpGet]
         public ActionResult<UserModel> Profile(int userId)
@@ -101,29 +73,6 @@ namespace backend.Controllers
 
                 return NotFound();
             }
-        }
-        //========================ENTRY MODULE==================================//
-        //post entry
-        [HttpPost]
-        public string Post(entryModel model)
-        {
-            using (var context = new dbContext())
-            {
-                context.Entry.Add(new entry
-                {
-                  
-                   Title = model.Title,
-                   Description = model.Description, 
-                   UserID   = model.UserID, 
-                   Posted = model.Posted,
-                   EntryLoc = model.EntryLoc,
-                   EntryLong = model.EntryLong,
-                   EntryLat = model.EntryLat
-                });
-
-                context.SaveChanges();
-            }
-            return "SUCCESS";
         }
 
 
