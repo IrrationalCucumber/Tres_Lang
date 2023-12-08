@@ -2,9 +2,7 @@
 using backend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using backend.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers
 {
@@ -22,7 +20,7 @@ namespace backend.Controllers
 
 
         [HttpPost]
-        public string signup(UserModel model)
+        public string Signup(UserModel model)
         {
             using (var context = new dbContext())
             {
@@ -43,7 +41,7 @@ namespace backend.Controllers
         }
  
        [HttpPut]
-public string update_profile(UserModel model, int userID)
+public string update_profile(int userID, UserModel model)
 {
     using (var context = new dbContext())
     {
@@ -72,7 +70,7 @@ public string update_profile(UserModel model, int userID)
 }
  //retrieve data based on id
         [HttpGet]
-        public ActionResult<UserModel> userprofile(int userId)
+        public ActionResult<UserModel> userprofile(int? userId)
         {
             using (var context = new dbContext())
             {
@@ -102,7 +100,7 @@ public string update_profile(UserModel model, int userID)
         //for sign in
         //verify if user exist
         [HttpGet]
-        public ActionResult<UserModel> signin(string username, string password)
+        public ActionResult<int> SignIn(string username, string password)
         {
             using (var context = new dbContext())
             {
@@ -110,20 +108,14 @@ public string update_profile(UserModel model, int userID)
 
                 if (user != null)
                 {
-                    // Map the entity to your UserModel
-                    var userModel = new UserModel
-                    {
-                        Id = user.Id
-
-                    };
-
-                    return Ok(userModel); 
+                    return Ok(user.Id);
                 }
 
                 return NotFound();
             }
         }
 
-        
+
+
     }
 }

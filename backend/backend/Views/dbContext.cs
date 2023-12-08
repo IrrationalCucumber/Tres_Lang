@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using backend.Views;
 using Microsoft.EntityFrameworkCore;
 
-namespace backend.Entities;
+namespace backend.Views;
 
 public partial class dbContext : DbContext
 {

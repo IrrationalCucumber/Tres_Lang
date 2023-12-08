@@ -1,26 +1,36 @@
 // Login.js
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "../components/Styles/Login.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [userID, setUserID] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Simple validation for empty username or password
     if (!username || !password) {
-      setError('Please enter both username and password.');
+      setError("Please enter both username and password.");
       return;
     }
-
-    // Add your login logic here
-    console.log('Logging in with:', username, password);
-
-    // Reset error state
-    setError('');
+    axios
+      .get(
+        `https://localhost:8800/SignIn?username=${username}&password=${password}`
+      )
+      .then((response) => {
+        console.log(response.data);
+        setUserID(response.data);
+        console.log(userID);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -28,7 +38,7 @@ const Login = () => {
       <div className="background">
         <div className="login-container">
           <h2>Login</h2>
-          {error && <div className="error-message">{error}</div>}
+          <p>{error && <div className="error-message">{error}</div>}</p>
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="username">Username</label>
