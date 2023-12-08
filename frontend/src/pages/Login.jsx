@@ -24,12 +24,18 @@ const Login = () => {
         `https://localhost:8800/SignIn?username=${username}&password=${password}`
       )
       .then((response) => {
-        console.log(response.data);
-        setUserID(response.data);
-        console.log(userID);
+        if (response != null) {
+          console.log(response.data);
+          setUserID(response.data);
+          console.log(userID);
+          navigate(`/profile/${userID}`);
+        } else {
+          setError("Invalid Username/Password");
+        }
       })
       .catch(function (error) {
         console.log(error);
+        setError("Invalid Username/Password");
       });
   };
 
@@ -38,7 +44,7 @@ const Login = () => {
       <div className="background">
         <div className="login-container">
           <h2>Login</h2>
-          <p>{error && <div className="error-message">{error}</div>}</p>
+          <h4 className="error-message">{error}</h4>
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="username">Username</label>
